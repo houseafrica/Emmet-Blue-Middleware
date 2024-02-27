@@ -1,5 +1,5 @@
 {
-    "name": "jiggabyte/emmet-blue-middleware",
+    "name": "houseafrica/emmet-blue-middleware",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -18,7 +18,7 @@
         }
     },
     "require": {
-        "jiggabyte/emmet-blue": "dev-master"
+        "houseafrica/emmet-blue": "dev-master"
     },
     "autoload":{
         "psr-4":{
