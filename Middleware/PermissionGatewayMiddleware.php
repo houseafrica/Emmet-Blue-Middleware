@@ -8,7 +8,8 @@ use Psr\Http\Message\ResponseInterface;
 class PermissionGatewayMiddleware implements \EmmetBlueMiddleware\MiddlewareInterface
 {
 	protected static function isUserLoggedIn($userToken)
-	{
+    {
+       // return true;
 	}
 
 	protected static function isUserPermitted($userToken, $resource, $permission)
@@ -37,7 +38,7 @@ class PermissionGatewayMiddleware implements \EmmetBlueMiddleware\MiddlewareInte
 
 				$globalResponse["status"] = 401;
 				$globalResponse["body"]["errorStatus"] = true;
-				$globalResponse["body"]["errorMessage"] = "You havent been logged in or your supplied login token is invalid.";
+				$globalResponse["body"]["errorMessage"] = "You haven't been logged in or your supplied login token is invalid.";
 
 				return $response->withJson($globalResponse["body"], $globalResponse["status"]);
 			}

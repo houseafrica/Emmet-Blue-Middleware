@@ -18,7 +18,8 @@
         }
     },
     "require": {
-        "houseafrica/emmet-blue": "dev-master"
+        "houseafrica/emmet-blue": "dev-master",
+      "ext-pdo": "*"
     },
     "autoload":{
         "psr-4":{

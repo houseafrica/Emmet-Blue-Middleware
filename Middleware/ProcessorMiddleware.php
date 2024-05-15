@@ -54,7 +54,7 @@ class ProcessorMiddleware implements \EmmetBlueMiddleware\MiddlewareInterface
 				if (!empty($options))
 				{
 					array_walk_recursive($options, function(&$item, $key){
-						$item = filter_var($item, FILTER_SANITIZE_STRING);
+						$item = htmlentities($item,  ENT_QUOTES | ENT_IGNORE, "UTF-8");
 					});
 					$pluginResponseData = $plugin((int)$id, $options);
 				}
@@ -70,7 +70,7 @@ class ProcessorMiddleware implements \EmmetBlueMiddleware\MiddlewareInterface
 			else
 			{
 				array_walk_recursive($options, function(&$item, $key){
-					$item = filter_var($item, FILTER_SANITIZE_STRING);
+					$item = htmlentities($item,  ENT_QUOTES | ENT_IGNORE, "UTF-8");
 				});
 				$pluginResponseData = $plugin($options);
 			}
@@ -114,12 +114,13 @@ class ProcessorMiddleware implements \EmmetBlueMiddleware\MiddlewareInterface
 		}
 	}
 
-	private function convertObjectNameToPsr2(string $objectName)
-	{
+	private function convertObjectNameToPsr2(string $objectName): string
+    {
 		return ucfirst(strtolower($objectName));
 	}
 
-	private function convertResourceToValidClassName(string $resourceString){
+	private function convertResourceToValidClassName(string $resourceString): string
+    {
 		$stringParts = explode("-", $resourceString);
 		$firstIndex = ucfirst($stringParts[0]);
 		unset($stringParts[0]);
@@ -131,8 +132,8 @@ class ProcessorMiddleware implements \EmmetBlueMiddleware\MiddlewareInterface
 		return $firstIndex.implode("", $stringParts);
 	}
 
-	private function convertActionToValidMethodName(string $actionString)
-	{
+	private function convertActionToValidMethodName(string $actionString): string
+    {
 		$stringParts = explode("-", $actionString);
 		$firstIndex = strtolower($stringParts[0]);
 		unset($stringParts[0]);
